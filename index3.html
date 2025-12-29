@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Website</title>
+<style>
+/* ===== General Reset ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background-image:url("21.jpeg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  z-index:-1;
+}
+
+/* ===== Header ===== */
+header {
+  width:100%; height:50px; background:#ff6f61; display:flex; justify-content:center; align-items:center;
+  font-family: Georgia; font-size:16px; letter-spacing:3px; color:white; position:sticky; top:0; z-index:999;
+  background-image: url("22.jpeg"); background-size:cover; background-position:center; background-attachment:fixed;
+    text-align:center;
+    padding-right:16px;
+    border-bottom:1px solid yellow;
+}
+
+/* ===== Navigation ===== */
+nav {
+  width:100%; background:#e94e3f; display:inline-block;justify-content:center; gap:30px; font-size:12px;
+  font-family: Georgia; top:50px; z-index:998;word-spacing:15px;
+  
+  position:sticky;
+  background-image:url("23.jpeg");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  text-align:center;
+  height:47px;
+  padding-top:5px;
+  border-bottom:1.50px solid red ;
+}
+nav a {color:white; text-decoration:none; font-weight:bold; transition:0.3s; font-size:12px;}
+nav a:hover { color:yellow; }
+
+/* ===== Search ===== */
+.search-container {
+  width:95%; max-width:768px; margin:10px auto; position:relative;
+  
+}
+.search-container input {
+  width:100%; padding:15px 50px 15px 20px;border-radius:50px; border:2.25px solid black; font-size:1.5em;
+  outline:none; height:60px;
+ background-image:url("31.jpeg"); background-size:cover;background-attachment:fixed;background-repeat:no-repeat;
+  
+  
+}
+.search-container button {
+  position:absolute; top:50%; transform:translateY(-50%); border:none; background:none; cursor:pointer;
+}
+
+#searchBtn { right:5%; margin-top:1.5px;}
+#searchBtn img { width:30px; height:28px;background-color:green;border:2px solid black;border-radius:25%;}
+#clearBtn { right:17%; font-size:33px; display:inline-block;}
+
+
+
+/* Suggestions */
+#suggestions { width:50%; margin:10px auto; text-align:center; font-size:1em; }
+#suggestions div { padding:5px; cursor:pointer; border-bottom:1px solid #ccc; background:rgba(0,0,0,0.6); color:white; }
+#suggestions div:hover { background:yellow; color:black; }
+
+/* ===== Slider ===== */
+.slider {width:95%; max-width:768px; margin:10px auto; overflow:hidden; border:2px solid black; height:175px; border-radius:3px;}
+.slides { display:flex; transition: transform 1s ease-in-out; height:175px; width:100%;}
+.slide { min-width:100%; height:175px; background-size:cover;}
+.slide img { width:100%; height:100%; object-fit:cover; }
+.dots { text-align:center; margin:5px 0;margin-top:-7px; 
+  
+}
+.dot { display:inline-block; width:8px; height:8px; margin:0 7px; background:white; border-radius:50%; cursor:pointer;border:1px solid black; }
+.dot.active { background:black; }
+
+/* ===== Ticker ===== */
+.ticker { width:100%; margin:5px auto; overflow:hidden; white-space:nowrap; color:white; padding:10px; font-size:2px; height:47px;background-image:url("30.jpeg");}
+.ticker-text { display:inline-block; animation:tickerAnim 20s linear infinite; letter-spacing:3px;font-size:13px; }
+@keyframes tickerAnim {0%{transform:translateX(100%);} 100%{transform:translateX(-100%);}}
+
+/* ===== Typewriter ===== */
+.typewriter-box { width:50%; max-width:600px; margin:5px auto; padding:5px 10px; border:2px solid black; border-radius:2px; background:brown; color:white; font-size:13px; font-family:Georgia; letter-spacing:2px; background-image:url('29.jpeg');e background-size:cover; background-position:center;
+  margin-left:1px;
+}
+.cursor { display:inline-block; width:2px; background:yellow; margin-left:5px; animation: blink 0.7s infinite; }
+@keyframes blink {0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* ===== Categories ===== */
+#categories { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; width:90%; margin:20px auto; }
+.category{
+  flex:1 1 152px;
+  width:152px;
+  height:390px;
+  background-image:url("25.jpeg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  margin:1px auto;
+}
+.category:hover { transform:translateY(-10px); box-shadow:0 0 25px rgba(0,0,0,0.5); }
+.category img { width:100%; height:200px; object-fit:cover; }
+.category p1 { padding:10px; font-family:Georgia; font-size:13px;
+ 
+}
+.category p { padding:0 10px; flex:1; font-size:9px;text-align:center;line-height:30px;}
+.category a{
+  width:90%;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-image:url("24.jpeg");
+  background-size:cover;
+  background-repeat:no-repeat;
+  text-decoration:none;
+  font-size:18px;
+  color:white;
+  font-family:georgia;
+  
+  letter-spacing:3px;
+  padding-top:2px;
+  margin:10px auto ;
+  
+}
+.category a:hover { background:yellow; color:black; }
+
+/* ===== Highlight ===== */
+.highlight { background:yellow; font-weight:bold; color:black; }
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  nav { flex-direction:column; gap:10px; font-size:1.2em; }
+  
+  .category img { height:150px; }
+  
+}
+@media(max-width:480px){
+  .search-container input { font-size:1em; padding:10px 40px; height:50px; }
+  .ticker { font-size:1em; padding:8px; }
+}
+
+/* ===== Smooth Scroll ===== */
+html { scroll-behavior:smooth; }
+
+#searchInput{
+  height:40px;
+  padding-right:110px;
+  
+}
+</style>
+</head>
+<body>
+
+<header>BESTSHOP1</header>
+
+<nav>
+  <a href="#">Home|</a>
+  <a href="#">Deals|</a>
+  <a href="#">Categories|</a>
+  <a href="#">Contact|</a>
+</nav>
+
+<div class="search-container">
+  <input id="searchInput" placeholder="Search...">
+  <button id="searchBtn"><img src="https://img.icons8.com/ios-filled/50/search--v1.png"/></button>
+  <button id="clearBtn">×</button>
+</div>
+<div id="suggestions"></div>
+
+<div class="slider">
+  <div class="slides" id="slides">
+    <div class="slide"><img src="26.jpeg"></div>
+    <div class="slide"><img src="27.jpeg"></div>
+    <div class="slide"><img src="28.jpeg"></div>
+  </div>
+</div>
+<div class="dots" id="dots"></div>
+
+<div class="ticker"><div class="ticker-text">Latest Offers | New Arrivals | Limited Time Deals | Huge Discounts | Shop Now!</div></div>
+
+<div class="typewriter-box"><span id="animatedText"></span><span class="cursor"></span></div>
+
+<div id="categories">
+  <div class="category">
+    <img src="15.jpeg">
+    <p1>ELECTRONICS</p1>
+    <br>
+    <p>Category Number=1
+    <br>
+    Next Category=10
+    
+    </p>
+    <a href="#">OPEN</a>
+  </div>
+  <div class="category">
+    <img src="16.jpeg">
+    <p1>GROCERIES</p1>
+    <br>
+    <p>Category Number=2
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+  <div class="category">
+    <img src="17.jpeg">
+    <p1>PERSONAL CARE</p1>
+    <p>Category Number=3
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+    <div class="category">
+    <img src="18.jpeg">
+    <p1>LIFE STYLE</p1>
+    <p>
+      <br>
+      Category Number=4
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+    <div class="category">
+    <img src="">
+    <p1>HOME & KITCHEN</p1>
+    <p>Category Number=5
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+    <div class="category">
+    <img src="">
+    <p1>FOOTWEAR</p1>
+    <p>
+      <br>
+      Category Number=6
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+    <div class="category">
+    <img src="">
+    <p1>TOOLS & HARDWARE</p1>
+    <p>Category Number=7
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+    <div class="category">
+    <img src="">
+    <p1>HOME DECOR</p1>
+    <p>Category Number=8
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+    <div class="category">
+    <img src="">
+    <p1>PLASTIC ITEMS</p1>
+    <p>Category Number=9
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+    <div class="category">
+    <img src="">
+    <p1>STATIONERY</p1>
+    <br>
+    <p>Category Number=10
+    <br>
+    Next Category=10
+    
+   </p>
+    <a href="#">OPEN</a>
+  </div>
+</div>
+
+<script>
+// ===== Slider =====
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const slidesContainer = document.getElementById("slides");
+const dotsContainer = document.getElementById("dots");
+slides.forEach((_,i)=>{
+  let dot=document.createElement("span");
+  dot.classList.add("dot");
+  if(i===0) dot.classList.add("active");
+  dot.addEventListener("click",()=>{slideIndex=i; showSlide(slideIndex);});
+  dotsContainer.appendChild(dot);
+});
+const dots=document.querySelectorAll(".dot");
+function showSlide(index){
+  slidesContainer.style.transform=`translateX(-${index*100}%)`;
+  dots.forEach(dot=>dot.classList.remove("active"));
+  dots[index].classList.add("active");
+}
+setInterval(()=>{slideIndex=(slideIndex+1)%slides.length; showSlide(slideIndex);},5000);
+
+// ===== Typewriter =====
+const sentences=["Welcome to BestShop1– where fashion meets comfort.",
+  "Enjoy exclusive discounts every weekend!",
+  "New arrivals daily – stay stylish!",
+  "Fast delivery to your doorstep.",
+  "Discover the joy of shopping from the comfort of your home."];
+let currentSentence=0, charIndex=0;
+const textElement=document.getElementById("animatedText");
+function type(){ if(charIndex<sentences[currentSentence].length){ textElement.textContent+=sentences[currentSentence].charAt(charIndex++); setTimeout(type,70);} else setTimeout(erase,1500);}
+function erase(){ if(charIndex>0){ textElement.textContent=sentences[currentSentence].substring(0,--charIndex); setTimeout(erase,30);} else{ currentSentence=(currentSentence+1)%sentences.length; setTimeout(type,500);}}
+document.addEventListener("DOMContentLoaded",()=>setTimeout(type,500));
+
+// ===== Search Highlight with Scroll Back =====
+const searchInput=document.getElementById("searchInput");
+const suggestions=document.getElementById("suggestions");
+const categories=document.querySelectorAll(".category");
+let words=[], originalContent=[];
+categories.forEach(cat=>{originalContent.push(cat.innerHTML); cat.querySelectorAll("*").forEach(n=>{if(n.children.length===0 && n.innerText) words.push(...n.innerText.split(" "));});});
+searchInput.addEventListener("input",()=>{
+  let query=searchInput.value.toLowerCase(); suggestions.innerHTML="";
+  if(query.length>0){
+    let filtered=[...new Set(words.filter(w=>w.toLowerCase().startsWith(query)))];
+    filtered.forEach(word=>{
+      let div=document.createElement("div"); div.innerText=word;
+      div.onclick=()=>{searchInput.value=word;suggestions.innerHTML=""; highlightAndScroll(word);}
+      suggestions.appendChild(div);
+    });
+  }
+});
+function highlightAndScroll(searchText){
+  let matches=[];
+  categories.forEach((cat,i)=>{
+    cat.innerHTML = originalContent[i];
+    if(searchText){
+      let regex = new RegExp(`(${searchText})`,"gi");
+      cat.querySelectorAll("*").forEach(node=>{
+        if(node.children.length===0 && node.innerText){
+          node.innerHTML = node.innerText.replace(regex,'<span class="highlight">$1</span>');
+        }
+      });
+    }
+    matches.push(...cat.querySelectorAll(".highlight"));
+  });
+
+  if(matches.length === 0){ alert("No match found!"); return; }
+
+  const originalScroll = window.scrollY || window.pageYOffset;
+
+  // Sort alphabetically
+  matches.sort((a,b)=>a.innerText.localeCompare(b.innerText));
+
+  let index = 0;
+  function scrollNext(){
+    if(index>=matches.length){
+      alert(`Total ${matches.length} match(es) found!`);
+      window.scrollTo({top: originalScroll, behavior: 'smooth'});
+      return;
+    }
+    const match = matches[index];
+    match.scrollIntoView({behavior:"smooth", block:"center"});
+    match.style.transition = "background 0.3s";
+    match.style.background = "yellow";
+    setTimeout(()=>{ match.style.background=""; }, 2000);
+    index++;
+    setTimeout(scrollNext, 2500);
+  }
+  scrollNext();
+}
+document.getElementById("searchBtn").addEventListener("click",()=>highlightAndScroll(searchInput.value.trim()));
+document.getElementById("clearBtn").addEventListener("click",()=>{
+  searchInput.value=""; suggestions.innerHTML="";
+  categories.forEach((cat,i)=>cat.innerHTML=originalContent[i]);
+});
+</script>
+</body>
+</html>
