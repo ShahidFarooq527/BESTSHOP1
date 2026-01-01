@@ -168,7 +168,7 @@ html { scroll-behavior:smooth; }
 </head>
 <body>
 
-<header>best-shop-1</header>
+<header>BESTSHOP1</header>
 
 <nav>
   <a href="index.html">Home|</a>
@@ -329,7 +329,7 @@ function showSlide(index){
 setInterval(()=>{slideIndex=(slideIndex+1)%slides.length; showSlide(slideIndex);},5000);
 
 // ===== Typewriter =====
-const sentences=["Welcome to Best Shop – where fashion meets comfort.",
+const sentences=["Welcome to BestShop1– where fashion meets comfort.",
   "Enjoy exclusive discounts every weekend!",
   "New arrivals daily – stay stylish!",
   "Fast delivery to your doorstep.",
@@ -401,6 +401,38 @@ document.getElementById("clearBtn").addEventListener("click",()=>{
   searchInput.value=""; suggestions.innerHTML="";
   categories.forEach((cat,i)=>cat.innerHTML=originalContent[i]);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Ye tab kaam karta hai jab app WebView ya PWA ho
+  window.addEventListener("popstate", function(event) {
+    // Back button press hua
+    // Yahan apna custom code likhein
+    if (window.location.pathname !== "/home") {
+      // Agar current page home nahi hai to wapas home page pe jao
+      window.history.back(); // ya custom page redirect
+    } else {
+      // Agar home page hai to user ko exit confirm karwa sakte hain
+      if (confirm("App se exit karna chahte hain?")) {
+        navigator.app.exitApp(); // Cordova/Capacitor ke liye
+      }
+    }
+  });
+
+  // History state push karna zaruri hai back button ke liye
+  history.pushState({}, "");
+
 </script>
 </body>
 </html>
